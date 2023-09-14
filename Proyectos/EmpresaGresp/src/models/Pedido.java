@@ -5,23 +5,26 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Pedido {
-	private String id;
+	private String referencia;
 	private LocalDate fecha;
-	private Cliente cliente;
+	private String cliente_id;
+	private String dependiente_id;
 	private List<Articulo> articulos;
 
-	public Pedido(String id, LocalDate fecha, Cliente cliente, List<Articulo> articulos) {
+	public Pedido(String referencia, LocalDate fecha, String cliente_id, String dependiente_id,
+			List<Articulo> articulos) {
 		super();
-		this.id = id;
+		this.referencia = referencia;
 		this.fecha = fecha;
-		this.cliente = cliente;
+		this.cliente_id = cliente_id;
+		this.dependiente_id = dependiente_id;
 		this.articulos = articulos;
 	}
 
 	public Pedido(LocalDate fecha, Cliente cliente) {
 		super();
 		this.fecha = fecha;
-		this.cliente = cliente;
+		this.cliente_id = cliente_id;
 		this.articulos = new ArrayList<>();
 	}
 
@@ -52,16 +55,20 @@ public class Pedido {
 		this.articulos = articulos;
 	}
 
-	public String getId() {
-		return id;
+	public String getReferencia() {
+		return referencia;
 	}
 
 	public LocalDate getFecha() {
 		return fecha;
 	}
 
-	public Cliente getCliente() {
-		return cliente;
+	public String getClienteID() {
+		return cliente_id;
+	}
+
+	public String getDependiente_id() {
+		return dependiente_id;
 	}
 
 }
