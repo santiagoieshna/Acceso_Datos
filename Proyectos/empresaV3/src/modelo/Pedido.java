@@ -1,48 +1,42 @@
-package models;
+package modelo;
 
 import java.util.Date;
 import java.util.HashMap;
 
 public class Pedido {
 	private String referencia;
-	private String clienteID;
-	private Integer descuento;
-	private String asistenteID;
+	private Cliente cliente;
+	private AsistentePedido asistente;
 	private Date fecha;
 	private HashMap<Articulo, Integer> articulos;
 
-	
-
-	public Pedido(String referencia, String clienteID, Integer descuento, String asistenteID, Date fecha,
+	public Pedido(String referencia, Cliente cliente, AsistentePedido asistente, Date fecha,
 			HashMap<Articulo, Integer> articulos) {
 		super();
 		this.referencia = referencia;
-		this.clienteID = clienteID;
-		this.descuento = descuento;
-		this.asistenteID = asistenteID;
+		this.cliente = cliente;
+		this.asistente = asistente;
 		this.fecha = fecha;
 		this.articulos = articulos;
-	}
-
-	public String getClienteID() {
-		return clienteID;
-	}
-
-	public String getAsistenteID() {
-		return asistenteID;
 	}
 
 	public Float calcularTotal() {
 		Integer descuento = getDescuento();
 		// totalpedido * ( 1 - descuento/100)
 		return 0f;
-	};
-	
-	private Integer getDescuento() {
-		
-		return descuento;
 	}
 
+	private Integer getDescuento() {
+		return cliente.getDescuento();
+	};
+	
+	public String getClienteID() {
+		return cliente.getDni();
+	}
+	public String getAsistenteVentasID() {
+		return asistente.getDni();
+	}
+	
 	public String getReferencia() {
 		return referencia;
 	}

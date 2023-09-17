@@ -1,4 +1,4 @@
-package models;
+package modelo;
 
 public class Dependiente extends AsistentePedido{
 

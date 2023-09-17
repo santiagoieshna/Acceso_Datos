@@ -14,7 +14,7 @@ public class PedidoControler {
 		this.pedidos = new ArrayList<>();
 	}
 	
-	public boolean hacerPedido( String cliente_id, String dependiente_id ) {
+	public boolean hacerPedido(String cliente_id, String dependiente_id ) {
 		return true;
 	}
 	
