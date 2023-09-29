@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Optional;
 
 import model.data.Articulo;
+import model.data.Cliente;
 import objectMother.ArticulosOM;
 
 public class ArticuloRepositorio {
@@ -26,5 +27,10 @@ public class ArticuloRepositorio {
 				return Optional.of(articulo);
 		}
 		return Optional.ofNullable(null);
+	}
+
+	public List<Cliente> findArticuloById() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 }
