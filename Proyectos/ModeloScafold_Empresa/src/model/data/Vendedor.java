@@ -8,7 +8,7 @@ public class Vendedor extends Persona {
 		this.ruta = ruta;
 	}
 
-	private Ruta getRuta() {
+	public Ruta getRuta() {
 		return ruta;
 	}
 

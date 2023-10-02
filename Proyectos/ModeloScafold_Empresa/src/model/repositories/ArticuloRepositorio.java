@@ -2,9 +2,9 @@ package model.repositories;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 import model.data.Articulo;
-import model.data.Cliente;
 import objectMother.ArticulosOM;
 
 public class ArticuloRepositorio {
@@ -29,8 +29,10 @@ public class ArticuloRepositorio {
 		return Optional.ofNullable(null);
 	}
 
-	public List<Cliente> findArticuloById() {
-		// TODO Auto-generated method stub
-		return null;
+	public List<Articulo> findByRange(float minimo, float maximo) {
+		return articulos.stream()
+				.filter((articulo)->{return articulo.getPrecio()>=minimo;})
+				.filter((articulo)->{return articulo.getPrecio()<=maximo;})
+				.collect(Collectors.toList());
 	}
 }
