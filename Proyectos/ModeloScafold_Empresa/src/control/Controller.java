@@ -88,6 +88,6 @@ public class Controller {
 	 * Lista de los pedidos vendidos por un Vendedor con id concreto
 	 */
 	public List<Pedido> getPedidosByVendedor(String idVendedor){
-		return clienteService.getPedidosByVendedor(empleadosService.getVendedorById(idVendedor).orElseThrow());
+		return clienteService.getPedidosByVendedor(empleadosService.getVendedorById(idVendedor).orElseThrow(null));
 	}
 }

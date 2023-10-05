@@ -4,11 +4,8 @@ import java.util.List;
 
 import model.data.Dependiente;
 
-public class DependienteRepositorio {
+public interface DependienteRepositorio {
 
-	public List<Dependiente> findAll() {
-		// TODO Auto-generated method stub
-		return null;
-	}
+	public List<Dependiente> findAll();
 
 }

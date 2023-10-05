@@ -21,6 +21,7 @@ class VendedorFOMTest {
 		List<Vendedor> findByRoutes = vendedorRepositorio.findByRoutes(Ruta.sur,Ruta.central);
 		assertTrue(centralysur.containsAll(findByRoutes));
 		assertTrue(findByRoutes.containsAll(vendedorRepositorio.findByRoutesDos(Ruta.sur,Ruta.central)));
+	
 	}
 
 }

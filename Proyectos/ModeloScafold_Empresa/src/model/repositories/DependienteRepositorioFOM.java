@@ -16,15 +16,7 @@ public class DependienteRepositorioFOM implements DependienteRepositorio {
 
 
 	@Override
-	public List<Dependiente> getAll() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-
-	@Override
 	public List<Dependiente> findAll() {
-		// TODO Auto-generated method stub
 		return null;
 	}
 

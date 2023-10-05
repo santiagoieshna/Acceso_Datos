@@ -10,6 +10,7 @@ import model.data.Vendedor;
 import model.repositories.ArticuloRepositorio;
 import model.repositories.ClienteRepositorio;
 import model.repositories.PedidoRepositorio;
+import model.repositories.PedidoRepositorioFOM;
 import model.repositories.VendedorRepositorioFOM;
 
 public class ClienteService {
@@ -21,7 +22,7 @@ public class ClienteService {
 	
 	public ClienteService() {
 		super();
-		pedidoRepositorio=new PedidoRepositorio();
+		pedidoRepositorio=new PedidoRepositorioFOM();
 	}
 
 
@@ -46,7 +47,7 @@ public class ClienteService {
 
 
 	public List<Pedido> getPedidosWithArticulo(Integer idArticulo) {
-		return pedidoRepositorio.findPedidosWithArticulo(articuloRepositorio.findById(idArticulo).orElseThrow());
+		return pedidoRepositorio.findPedidosWithArticulo(articuloRepositorio.findById(idArticulo).orElseThrow(null));
 	}
 
 
