@@ -12,6 +12,7 @@ public abstract class Pedido {
 	private Cliente cliente;
 	private Set<LineaPedido> lineasPedido;
 	
+	
 	public void addLinea(Articulo articulo,int cantidad) {
 		lineasPedido.add(new LineaPedido(articulo, cantidad));
 	}
@@ -26,5 +27,16 @@ public abstract class Pedido {
 			total+=linea.getSubTotal();
 		}
 		return total;
+	}
+	public boolean contains(Articulo articulo) {
+		return lineasPedido.stream().anyMatch((linea)->{
+			return linea.getArticulo().equals(articulo);
+		});
+	}
+	public abstract String getIdVendedor();
+	
+	
+	public final Cliente getCliente() {
+		return null;
 	}
 }
