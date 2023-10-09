@@ -6,9 +6,17 @@ import java.util.List;
 
 import org.junit.jupiter.api.Test;
 
+<<<<<<< HEAD
 import model.data.Ruta;
 import model.data.Vendedor;
 import model.repositories.VendedorRepositorioFOM;
+=======
+import control.services.ClienteService;
+import control.services.EmpleadosService;
+import model.data.Ruta;
+import model.data.Vendedor;
+import model.repositories.impn.VendedorRepositorioFOM;
+>>>>>>> e6e2148c5a9d6b47bb13c176249b1a5f0edb55fb
 import objectMother.VendedorOM;
 
 class VendedorFOMTest {
@@ -24,4 +32,15 @@ class VendedorFOMTest {
 	
 	}
 
+	
+
+	@Test
+	void otro(){
+		//getPedidosByVendedor
+		ClienteService clienteService=new ClienteService();
+		EmpleadosService empleadosService=new EmpleadosService(new VendedorRepositorioFOM());
+		
+		String dni = "1";
+		clienteService.getPedidosByVendedor(empleadosService.getVendedorById(dni));
+	}
 }

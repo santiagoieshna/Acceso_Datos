@@ -15,5 +15,11 @@ public class PedidoComercial extends Pedido {
 	private void setVendedor(Vendedor vendedor) {
 		this.vendedor = vendedor;
 	}
+
+	@Override
+	public String getIdVendedor() {
+		// TODO Auto-generated method stub
+		return null;
+	}
 	
 }

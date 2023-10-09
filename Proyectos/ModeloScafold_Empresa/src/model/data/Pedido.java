@@ -12,6 +12,7 @@ public abstract class Pedido {
 	private Cliente cliente;
 	private Set<LineaPedido> lineasPedido;
 	
+	
 	public void addLinea(Articulo articulo,int cantidad) {
 		lineasPedido.add(new LineaPedido(articulo, cantidad));
 	}
@@ -32,4 +33,5 @@ public abstract class Pedido {
 			return linea.getArticulo().equals(articulo);
 		});
 	}
+
 }

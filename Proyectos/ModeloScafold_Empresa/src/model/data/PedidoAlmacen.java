@@ -17,5 +17,12 @@ public class PedidoAlmacen extends Pedido{
 		this.dependiente = dependiente;
 	}
 
+	@Override
+	public String getIdVendedor() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	
+
 	
 }
