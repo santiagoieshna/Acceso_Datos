@@ -8,6 +8,10 @@ public class Coordenada {
         this.ejeX = ejeX;
         this.ejeY = ejeY;
     }
+    
+    /**
+     * Genera una Cordenada en el origen
+     */
     public Coordenada() {
         super();
         this.ejeX = 0;
@@ -28,6 +32,8 @@ public class Coordenada {
     private void setEjeY(Integer ejeY) {
         this.ejeY = ejeY;
     }
+    
+    
     
     
 }
