@@ -5,7 +5,7 @@ public class TableroOcultas extends Tablero {
 		super(size);
 		rellenarOcultas();
 	}
-	public void ocultarPosiciones(int[] coordenada) {
+	public void ocultarPosiciones(Coordenada coordenada) {
 		setValueAt(coordenada, -1); 
 	}
 
@@ -19,9 +19,9 @@ public class TableroOcultas extends Tablero {
 		boolean resultado = true;
 		for (int i = 0; i < casillas.length && resultado; i++) {
 			for (int j = 0; j < casillas.length && resultado; j++) {
-				int[] coordenada= {i,j};
+				Coordenada coordenada= new Coordenada(i, j);
 				//otra forma de escribirlo
-				if (getValueAt(new int[]{i,j})==-1 )  
+				if (getValueAt(new Coordenada(i, j))==-1 )  
 					resultado = false;
 			}
 		}

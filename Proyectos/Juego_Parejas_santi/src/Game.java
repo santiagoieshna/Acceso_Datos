@@ -20,14 +20,14 @@ public class Game {
 	 * @return
 	 */
 	public boolean realizarJugada() {
-		int[] origen;
+		Coordenada origen;
 		do {
-			origen = CoupleParts.pedirCoordenada();
+			origen = pedirCoordenada();
 		} while (!revelarPosicion(origen));
 		ocultas.mostrarTablero();
-		int[] destino;
+		Coordenada destino;
 		do {
-			destino = CoupleParts.pedirCoordenada();
+			destino = pedirCoordenada();
 		} while (!revelarPosicion(destino));
 		ocultas.mostrarTablero();
 		boolean comprobacion = tablero.comprobarParejas(origen, destino);
@@ -41,7 +41,11 @@ public class Game {
 		return comprobacion;
 	}
 	
-	public  boolean revelarPosicion(int[] origen) {
+	public static Coordenada pedirCoordenada() {
+		return new Coordenada(CoupleParts.pedirValor(), CoupleParts.pedirValor());
+	}
+	
+	public  boolean revelarPosicion(Coordenada origen) {
 		boolean retorno = false;
 		if (ocultas.getValueAt(origen) == -1) {
 			ocultas.setValueAt(origen, tablero.getValueAt(origen));

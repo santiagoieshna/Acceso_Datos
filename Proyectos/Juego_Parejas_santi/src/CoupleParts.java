@@ -1,30 +1,15 @@
 
-
 import java.util.Random;
 import java.util.Scanner;
 
 public class CoupleParts {
-	
-	
-	
+
 	public static void pausar(int i) {
 		try {
 			new Thread().sleep(i * 1000);
 		} catch (InterruptedException e) {
 			e.printStackTrace();
 		}
-	}
-
-	
-	
-	
-
-	public static int[] pedirCoordenada() {
-		int[] coordenada = new int[2];
-		for (int i = 0; i < coordenada.length; i++) {
-			coordenada[i] = pedirValor();
-		}
-		return coordenada;
 	}
 
 	public static int pedirValor() {
@@ -41,10 +26,6 @@ public class CoupleParts {
 		return valor >= 0 && valor < Constantes.size;
 	}
 
-	
-
-	
-
 	/**
 	 * genera una coordenda valida (dentro de los limites del tablero
 	 * 
@@ -55,13 +36,5 @@ public class CoupleParts {
 			coordenada[i] = new Random().nextInt(Constantes.size);
 		}
 	}
-
-
-
-	
-
-	
-
-	
 
 }
