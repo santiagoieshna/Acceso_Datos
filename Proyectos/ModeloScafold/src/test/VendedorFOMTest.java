@@ -1,46 +1,51 @@
 package test;
 
 import static org.junit.Assert.assertTrue;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
 
 import java.util.List;
+import java.util.Optional;
 
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-<<<<<<< HEAD
-import model.data.Ruta;
-import model.data.Vendedor;
-import model.repositories.VendedorRepositorioFOM;
-=======
-import control.services.ClienteService;
+import control.services.VentaService;
 import control.services.EmpleadosService;
 import model.data.Ruta;
 import model.data.Vendedor;
-import model.repositories.impn.VendedorRepositorioFOM;
->>>>>>> e6e2148c5a9d6b47bb13c176249b1a5f0edb55fb
+import model.repositories.PedidoComercialRepositorio;
+import model.repositories.PedidoComercialRepositoryFOM;
+import model.repositories.VendedorRepositorioFOM;
 import objectMother.VendedorOM;
 
 class VendedorFOMTest {
-
+	VendedorRepositorioFOM vendedorRepositorio;
+	
+	@BeforeEach
+	void beforeEach() {
+		vendedorRepositorio = new VendedorRepositorioFOM();
+	}
+	
+	@Test 
+	void findByIdTest(){
+		String dni = "12345";
+		assertTrue(vendedorRepositorio.findById(dni).isPresent());
+		dni = "000000";
+		assertFalse(vendedorRepositorio.findById(dni).isPresent());
+	}
+	
 	@Test
-	void test() {
+	void findByRoutesTest() {
 		List<Vendedor> vendedores = new VendedorOM().getVendedores();
-		List<Vendedor> centralysur = List.of(vendedores.get(0),vendedores.get(2));
-		VendedorRepositorioFOM vendedorRepositorio=new VendedorRepositorioFOM();
-		List<Vendedor> findByRoutes = vendedorRepositorio.findByRoutes(Ruta.sur,Ruta.central);
-		assertTrue(centralysur.containsAll(findByRoutes));
-		assertTrue(findByRoutes.containsAll(vendedorRepositorio.findByRoutesDos(Ruta.sur,Ruta.central)));
-	
+		List<Vendedor> expected = List.of(vendedores.get(0),vendedores.get(2));
+		List<Vendedor> actual = vendedorRepositorio.findByRoutes(Ruta.sur,Ruta.central);
+		assertTrue(expected.containsAll(actual));
+		assertTrue(actual.containsAll(vendedorRepositorio.findByRoutesDos(Ruta.sur,Ruta.central)));
 	}
 
 	
+	
 
-	@Test
-	void otro(){
-		//getPedidosByVendedor
-		ClienteService clienteService=new ClienteService();
-		EmpleadosService empleadosService=new EmpleadosService(new VendedorRepositorioFOM());
-		
-		String dni = "1";
-		clienteService.getPedidosByVendedor(empleadosService.getVendedorById(dni));
-	}
+	
 }

@@ -1,11 +1,15 @@
 package model.data;
 
+import java.time.LocalDate;
+import java.util.Set;
+
 public class PedidoAlmacen extends Pedido{
 	//propiedades
 	private Dependiente dependiente;
 
-	public PedidoAlmacen(Dependiente dependiente) {
-		super();
+	public PedidoAlmacen(long numeroDeSerie, LocalDate fecha, Cliente cliente, Set<LineaPedido> lineasPedido,
+			Dependiente dependiente) {
+		super(numeroDeSerie, fecha, cliente, lineasPedido);
 		this.dependiente = dependiente;
 	}
 

@@ -22,12 +22,8 @@ public class Cliente extends Persona {
 	private void setDescuentoAplicado(boolean descuentoAplicado) {
 		this.descuentoAplicado = descuentoAplicado;
 	}
-
-	@Override
-	public String toString() {
-		
-		return "Cliente ["+super.toString()+" descuentoAplicado=" + descuentoAplicado + "]";
-	}
+	
+	
 
 	
 }

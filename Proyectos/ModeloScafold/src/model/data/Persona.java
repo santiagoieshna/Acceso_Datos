@@ -32,11 +32,6 @@ public class Persona {
 		return true;
 	}
 
-	@Override
-	public String toString() {
-		return "Persona [dNICliente=" + dNICliente + ", nombre=" + nombre + "]";
-	}
-
 	private String dNICliente;
 	private String nombre;
 

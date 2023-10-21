@@ -1,11 +1,9 @@
-package model.repositories.ints;
+package model.repositories;
 
 import java.util.List;
 
 import model.data.Dependiente;
 
-public interface DependienteRepositorio {
-
+public interface DependienteRepositoriable {
 	public List<Dependiente> findAll();
-
 }

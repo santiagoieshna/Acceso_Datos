@@ -12,6 +12,9 @@ public abstract class Pedido {
 	private Cliente cliente;
 	private Set<LineaPedido> lineasPedido;
 	
+	public Pedido(long numeroDeSerie, LocalDate fecha, Cliente cliente, Set<LineaPedido> lineasPedido) {
+		
+	}
 	
 	public void addLinea(Articulo articulo,int cantidad) {
 		lineasPedido.add(new LineaPedido(articulo, cantidad));
@@ -34,4 +37,15 @@ public abstract class Pedido {
 		});
 	}
 
+	public long getNumeroDeSerie() {
+		return numeroDeSerie;
+	}
+
+	public Cliente getCliente() {
+		return cliente;
+	}
+	
+	
+	
+	
 }

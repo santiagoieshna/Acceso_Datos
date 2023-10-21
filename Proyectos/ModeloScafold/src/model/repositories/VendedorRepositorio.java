@@ -1,4 +1,4 @@
-package model.repositories.ints;
+package model.repositories;
 
 import java.util.List;
 import java.util.Optional;
