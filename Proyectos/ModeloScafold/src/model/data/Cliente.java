@@ -1,6 +1,8 @@
 package model.data;
 
-public class Cliente extends Persona {
+import java.io.Serializable;
+
+public class Cliente extends Persona implements Serializable{
 	
 	//Todos los clientes con descuento tienen el mismo descuento
 	private static float descuento=0.2f;

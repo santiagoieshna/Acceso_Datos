@@ -13,6 +13,7 @@ import model.data.Pedido;
 import model.data.Ruta;
 import model.data.Vendedor;
 import model.repositories.ArticuloRepositorio;
+import model.repositories.ArticuloRepositorioFichero;
 import model.repositories.ClienteRepositorio;
 import model.repositories.DependienteRepositorio;
 import model.repositories.VendedorRepositorioFOM;
@@ -28,6 +29,7 @@ public class Controller {
 		super();
 		empleadosService=new EmpleadosService(new VendedorRepositorioFOM(), new DependienteRepositorio());
 //		empleadosService=new EmpleadosService(new VendedorRepositorioFicheros());
+		clienteService = new VentaService(null, new ArticuloRepositorioFichero(), null, null);
 		
 	}
 	//Bicontroller

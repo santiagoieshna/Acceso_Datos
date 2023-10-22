@@ -1,7 +1,9 @@
 package model.data;
 
 public class Persona {
-
+	private String dNICliente;
+	private String nombre;
+	
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -32,8 +34,7 @@ public class Persona {
 		return true;
 	}
 
-	private String dNICliente;
-	private String nombre;
+
 
 	public Persona(String dNICliente, String nombre) {
 		super();

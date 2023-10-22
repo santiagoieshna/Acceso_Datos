@@ -23,9 +23,10 @@ public class PedidosComercialOM {
 		List<Cliente> clientes = new ClientesOM().getClientes();
 		List<Set<LineaPedido>> lineas = new LineaPedidoOM().getLineasDePedido();
 		for (int i = 0; i < 5; i++) {
+			System.out.println(i);
 			PedidoComercial pedido = new PedidoComercial(i, LocalDate.of(2010+i, 3, 3), clientes.get(i), lineas.get(i), vendedores.get(i));
 			pedidos.add(pedido);
-			System.out.println(pedidos.get(i).getCliente().toString());
+			System.out.println(pedido.getNumeroDeSerie());
 		}
 		return pedidos;
 	}

@@ -14,6 +14,7 @@ public class PedidoComercialRepositoryFOM implements PedidoComercialRepositorio 
 	
 	public PedidoComercialRepositoryFOM() {
 		lista = new PedidosComercialOM().getPedidosComercialesParaTest();
+		if(lista.get(0)==null) System.out.println("Algo mal");
 	}
 	
 	@Override

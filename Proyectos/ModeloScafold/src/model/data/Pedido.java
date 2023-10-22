@@ -13,7 +13,10 @@ public abstract class Pedido {
 	private Set<LineaPedido> lineasPedido;
 	
 	public Pedido(long numeroDeSerie, LocalDate fecha, Cliente cliente, Set<LineaPedido> lineasPedido) {
-		
+		this.numeroDeSerie = numeroDeSerie;
+		this.fecha = fecha;
+		this.cliente = cliente;
+		this.lineasPedido = lineasPedido;
 	}
 	
 	public void addLinea(Articulo articulo,int cantidad) {
@@ -43,6 +46,10 @@ public abstract class Pedido {
 
 	public Cliente getCliente() {
 		return cliente;
+	}
+	
+	public Set<LineaPedido> getLineas(){
+		return lineasPedido;
 	}
 	
 	
