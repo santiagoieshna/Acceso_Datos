@@ -1,4 +1,4 @@
-package model.repositories.impn;
+package model.repositories;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -8,7 +8,6 @@ import java.util.stream.Collectors;
 
 import model.data.Ruta;
 import model.data.Vendedor;
-import model.repositories.ints.VendedorRepositorio;
 import objectMother.VendedorOM;
 
 public class VendedorRepositorioFOM implements VendedorRepositorio {
@@ -33,8 +32,8 @@ public class VendedorRepositorioFOM implements VendedorRepositorio {
 	}
 
 	public Optional<Vendedor> findById(String idVendedor) {
-		// TODO Auto-generated method stub
-		return null;
+		return vendedores.stream().filter(vendedor -> vendedor.getdNICliente().equals(idVendedor))
+				.findFirst();
 	}
 
 }

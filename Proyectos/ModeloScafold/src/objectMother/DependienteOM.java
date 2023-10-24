@@ -2,26 +2,17 @@ package objectMother;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Random;
 
 import model.data.Dependiente;
-import utiles.UtilesPersona;
 
 public class DependienteOM {
-	
-	public static List<Dependiente> getDependientes(int ammount){
-		List<Dependiente> dependientes = new ArrayList<>();
-		
-		for (int i = 0; i < ammount; i++) {
-			
-			String dni = UtilesPersona.genDNI();
-			String nombreDependiente = UtilesPersona.genFakeName();
-			Integer mostrador= new Random().nextInt(45);
-			
-			dependientes.add(new Dependiente(dni,nombreDependiente, mostrador));
-		}
-
-		
-		return dependientes;
-	}
+	public List<Dependiente> getDependientes(){
+		ArrayList<Dependiente> dependienteList = new ArrayList<>();
+		dependienteList.add(new Dependiente("12345", "John Doe", 1));
+		dependienteList.add(new Dependiente("67890", "Jane Smith", 2));
+		dependienteList.add(new Dependiente("54321", "Bob Johnson", 3));
+		dependienteList.add(new Dependiente("98765", "Alice Brown", 4));
+		dependienteList.add(new Dependiente("13579", "Eve Wilson", 5));
+		return dependienteList;
+	};
 }

@@ -4,48 +4,52 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Optional;
 
-import control.services.EmpleadosService;
 import control.services.VentaService;
+import control.services.EmpleadosService;
 import model.data.Articulo;
 import model.data.Cliente;
 import model.data.Dependiente;
 import model.data.Pedido;
+import model.data.Ruta;
 import model.data.Vendedor;
-import model.repositories.impn.VendedorRepositorioFicheros;
-
+import model.repositories.ArticuloRepositorio;
+import model.repositories.ArticuloRepositorioFichero;
+import model.repositories.ClienteRepositorio;
+import model.repositories.DependienteRepositorio;
+import model.repositories.VendedorRepositorioFOM;
+import model.repositories.VendedorRepositorioFicheros;
 
 public class Controller {
-	private VentaService ventasService;
+	private VentaService clienteService;
 	private EmpleadosService empleadosService;
 	
 	
 
 	public Controller() {
 		super();
-//		empleadosService=new EmpleadosService(new VendedorRepositorioFOM());
-		empleadosService=new EmpleadosService(new VendedorRepositorioFicheros());
-
+		empleadosService=new EmpleadosService(new VendedorRepositorioFOM(), new DependienteRepositorio());
+//		empleadosService=new EmpleadosService(new VendedorRepositorioFicheros());
+		clienteService = new VentaService(null, new ArticuloRepositorioFichero(), null, null);
+		
 	}
 	//Bicontroller
 	/**
 	 * Todos los pedidos de un cliente (busca por dni) 
 	 */
 	public List<Pedido> getPedidosByClienteDni(String dni) {
-
-		return ventasService.getPedidosByClienteDni(dni);
+		return clienteService.getPedidosByClienteDni(dni);
 	}
 	/**
 	 * Necesito la lista completa de clientes
 	 */
 	public List<Cliente> getClientes(){
-
-		return ventasService.findClientes();
+		return clienteService.findClientes();
 	}
 	/**
 	 * necesito un cliente por id
 	 */
 	public Optional<Cliente> getClienteBydni(String dni){
-		return ventasService.findClienteByDni(dni);
+		return clienteService.findClienteByDni(dni);
 	}
 	/**
 	 * Todos los articulos 
@@ -59,7 +63,7 @@ public class Controller {
 	public List<Articulo> getArticulosBetweenPrecios(float minimo,float maximo){
 		//clausula guarda
 		if(minimo<=maximo)
-			return ventasService.getArticuloByPrizeRange(minimo,maximo);
+			return clienteService.getArticuloByPrizeRange(minimo,maximo);
 		return new LinkedList<Articulo>();
 	}
 	/**
@@ -78,7 +82,7 @@ public class Controller {
 	 * Los pedidos donde se vende un articulo concreto
 	 */
 	public List<Pedido> getPedidosWithArticulo(Integer idArticulo){
-		return ventasService.getPedidosWithArticulo(idArticulo);
+		return clienteService.getPedidosWithArticulo(idArticulo);
 	}
 	/**
 	 * Para un cliente, la facturacion total entre dos fechas
@@ -87,9 +91,6 @@ public class Controller {
 	 * Lista de los pedidos vendidos por un Vendedor con id concreto
 	 */
 	public List<Pedido> getPedidosByVendedor(String idVendedor){
-		
-		Vendedor vendedor = empleadosService.getVendedorById(idVendedor).orElseThrow(null);
-		return ventasService.getPedidosByVendedor(vendedor);
+		return clienteService.getPedidosByVendedor(empleadosService.getVendedorById(idVendedor).orElseThrow());
 	}
-	
 }

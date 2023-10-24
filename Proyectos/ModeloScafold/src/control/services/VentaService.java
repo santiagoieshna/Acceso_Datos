@@ -2,28 +2,35 @@ package control.services;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 import model.data.Articulo;
 import model.data.Cliente;
 import model.data.Pedido;
 import model.data.Vendedor;
-import model.repositories.impn.PedidoRepositorioFOM;
-import model.repositories.impn.VendedorRepositorioFOM;
-import model.repositories.ints.ArticuloRepositorio;
-import model.repositories.ints.ClienteRepositorio;
-import model.repositories.ints.PedidoRepositorio;
+import model.repositories.ArticuloRepositoriable;
+import model.repositories.ArticuloRepositorio;
+import model.repositories.ClienteRepositoriable;
+import model.repositories.ClienteRepositorio;
+import model.repositories.PedidoComercialRepositorio;
+import model.repositories.PedidoRepositoriable;
+import model.repositories.PedidoRepositorio;
+import model.repositories.VendedorRepositorioFOM;
 
 public class VentaService {
 
-	private PedidoRepositorio pedidoRepositorio;
-	private ArticuloRepositorio articuloRepositorio;
-	private ClienteRepositorio clienteRepositorio;
+	private PedidoRepositoriable pedidoRepositorio;
+	private ArticuloRepositoriable articuloRepositorio;
+	private ClienteRepositoriable clienteRepositorio;
+	private PedidoComercialRepositorio pedidoComercialRepositorio;
 	
-	
-	public VentaService() {
+	public VentaService(PedidoRepositoriable pedidoRepositorio, ArticuloRepositoriable articuloRepositorio,
+			ClienteRepositoriable clienteRepositorio, PedidoComercialRepositorio pedidoComercialRepositorio) {
 		super();
-		pedidoRepositorio=new PedidoRepositorioFOM();
-		
+		this.pedidoComercialRepositorio = pedidoComercialRepositorio;
+		this.articuloRepositorio = articuloRepositorio;
+		this.clienteRepositorio = clienteRepositorio;
+		this.pedidoRepositorio = pedidoRepositorio;
 	}
 
 
@@ -48,7 +55,7 @@ public class VentaService {
 
 
 	public List<Pedido> getPedidosWithArticulo(Integer idArticulo) {
-		return pedidoRepositorio.findPedidosWithArticulo(articuloRepositorio.findById(idArticulo).orElseThrow(null));
+		return pedidoRepositorio.findPedidosWithArticulo(articuloRepositorio.findById(idArticulo).orElseThrow());
 	}
 
 
@@ -58,7 +65,11 @@ public class VentaService {
 
 
 	public List<Pedido> getPedidosByVendedor(Vendedor vendedor) {
-		return pedidoRepositorio.findByVendedor(vendedor);
+		return pedidoComercialRepositorio.findByVendedor(vendedor)
+				.stream()
+				.map((pedido)->{return (Pedido)pedido;})
+				//.peek(pedido -> pedido.getCliente().toString())
+				.collect(Collectors.toList());
 	}
 	
 }

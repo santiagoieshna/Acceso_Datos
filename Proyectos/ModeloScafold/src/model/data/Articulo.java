@@ -1,8 +1,9 @@
 package model.data;
 
+import java.io.Serializable;
 import java.util.Objects;
 
-public class Articulo {
+public class Articulo implements Serializable{
 	private Integer id;
 	private String nombre;
 	private float precio;

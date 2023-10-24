@@ -1,13 +1,12 @@
-package model.repositories.impn;
+package model.repositories;
 
 import java.util.List;
 import java.util.Optional;
 
 import model.data.Ruta;
 import model.data.Vendedor;
-import model.repositories.ints.VendedorRepositorio;
 
-public class VendedorRepositorioFicheros implements VendedorRepositorio {
+public class VendedorRepositorioBD implements VendedorRepositorio{
 
 	@Override
 	public List<Vendedor> findByRoutes(Ruta... rutas) {
