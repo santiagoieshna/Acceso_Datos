@@ -17,4 +17,8 @@ public abstract class DaoFactory {
 	
 	public abstract PersonaDAO getPersonaDAO();
 	
+	public abstract HotelDAO getHotelDAO();
+	
+	public abstract ReservaDAO getReservaDAO();
+	
 }

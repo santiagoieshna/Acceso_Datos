@@ -5,6 +5,8 @@ import java.sql.ResultSet;
 import java.sql.ResultSetMetaData;
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Iterator;
+import java.util.Optional;
 
 import mapper.PersonaMapper;
 import modelo.AbstractDAO.PersonaDAO;
@@ -33,13 +35,14 @@ public class PersonaDAOJdbc implements PersonaDAO {
 //		ResultSet rs = ejecutor.executeQuery();
 	
 		
-		ResultSet conjuntoResultados = accessJdbc.executeQuery("SELECT * FROM personas");
+		ResultSet conjuntoResultados = accessJdbc.execute("SELECT * FROM personas");
 		Collection<Persona> personas = new ArrayList<>();
 		try {
 			while (conjuntoResultados.next()) {
 				personas.add(new PersonaMapper().map(conjuntoResultados));
 			} 
 		} catch (Exception e) {
+			e.printStackTrace();
 			return null;
 		}
 		return personas;
@@ -47,7 +50,10 @@ public class PersonaDAOJdbc implements PersonaDAO {
 
 	@Override
 	public Persona findById(Integer id) {
-		// TODO Auto-generated method stub
+		String query = "Select nombre from personas WHERE id="+id;
+		
+		
+		
 		return null;
 	}
 

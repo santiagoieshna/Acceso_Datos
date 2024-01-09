@@ -33,6 +33,7 @@ public class AccessJdbc {
 				instruccion = conexion.createStatement();
 				conjuntoResultados = instruccion.executeQuery(query);
 				metaDatos = conjuntoResultados.getMetaData();
+				//System.out.println(metaDatos.toString());
 			} catch (SQLException e) {
 				return null;
 			}
@@ -48,6 +49,7 @@ public class AccessJdbc {
 			rs = ejecutor.executeQuery();
 		}catch (SQLException e) {
 			System.out.println("Error en la Query");
+			e.printStackTrace();
 		}catch (Exception e) {
 			System.out.println("Excepcion no contemplada"+ e.getMessage());
 		}
